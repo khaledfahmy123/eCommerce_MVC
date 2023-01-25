@@ -37,11 +37,6 @@ class ProductController extends Controller
     private function post(): string
     {
         $data = (array) json_decode(file_get_contents("php://input"), true);
-        
-        if ($data["status"] === "delete"){
-            return $this->delete();
-        }
-        
         $status = $this->gateway->addProduct($data);
         return $status;
     }
